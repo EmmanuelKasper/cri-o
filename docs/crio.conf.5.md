@@ -51,8 +51,9 @@ CRI-O reads its storage defaults from the containers-storage.conf(5) file locate
 
 **version_file_persist**=""
   Location for CRI-O to lay down the persistent version file.
-  It is used to check if crio wipe should wipe images, which should
-  only happen when CRI-O has been upgraded
+  If set to a file path, CRI-O will save its version to that file. Further CRI-O restarts will check that file to see if if CRI-O has been upgraded, which
+  will trigger a cleanup of all container images.
+  If set to an empty string, this will prevent the cleanup of container images on upgrade.
 
 **internal_wipe**=true
   **This option is currently DEPRECATED, and will be removed in the future.**
